@@ -76,8 +76,7 @@ function updateAllCheckboxes(flagsValueNum) {
         let flagBit = ((0x1 << parseInt(checkbox.value)));
         if ((BigInt(flagBit) & BigInt(flagsValueNum)) > 0) {
             $("#" + checkbox.id).prop("checked", true);
-        }
-        else {
+        } else {
             $("#" + checkbox.id).prop("checked", false);
         }
     });
@@ -90,14 +89,16 @@ function updateFlagValue() {
             flagsNumber |= (0x1 << parseInt(checkbox.value));
         }
     });
-    flagValueInput.value = (flagsNumber>>>0).toString(16).toUpperCase();
+    // Convert the number to hexadecimal, pad it to 8 characters, and set the value
+    flagValueInput.value = (flagsNumber >>> 0).toString(16).toUpperCase().padStart(8, "0");
 }
 
 function processFlagValue() {
     if (!init) return;
 
-    flagValueInput.value = flagValueInput.value.toUpperCase().substr(0, 8);
-    let input = (flagValueInput.value.length > 0) ? flagValueInput.value : 0;
+    // Ensure the input value is padded to 8 characters before processing
+    flagValueInput.value = flagValueInput.value.toUpperCase().padStart(8, "0").substr(0, 8);
+    let input = (flagValueInput.value.length > 0) ? flagValueInput.value : "0";
     if (!(/^[0-9a-f]+$/i.test(input))) {
         flagValueInput.classList.add("badInput");
         updateAllCheckboxes(0);
