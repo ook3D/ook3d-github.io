@@ -90,7 +90,9 @@ function updateFlagValue() {
             flagsNumber |= (0x1 << parseInt(checkbox.value));
         }
     });
-    flagValueInput.value = (flagsNumber>>>0).toString(16).toUpperCase();
+
+    // Convert to hexadecimal and pad to 8 characters with leading zeros
+    flagValueInput.value = flagsNumber.toString(16).toUpperCase().padStart(8, '0');
 }
 
 function processFlagValue() {
