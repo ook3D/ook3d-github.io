@@ -1,0 +1,234 @@
+:root {
+    --dim-text: #7e899e;
+    --normal-text: #c9cacc;
+    --link-color: #6dbdf3;
+    --page-bg: #282C34;
+    --dark-bg: #1d2026;
+    --error-bg: #500000;
+    --selected-flag-bg: #034870;
+    --selected-flag-text: white;
+    --inputs-width: 220px;
+    --normal-font-size: 18px;
+    --small-font-size: 14px;
+}
+
+* {
+    box-sizing: border-box;
+    font-size: var(--normal-font-size);
+    font-family: sans-serif;
+    color: var(--normal-text);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selectable {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+
+body {
+    background-color: var(--page-bg);
+    margin: 30px;
+}
+
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+select {
+    padding: 8px;
+    background-color: var(--dark-bg);
+    border: 0px;
+}
+
+input {
+    font-family: monospace;
+    background-color: var(--dark-bg);
+    border: 0px;
+}
+
+.dimmedColor {
+    color: var(--dim-text) !important;
+}
+
+.badInput {
+    background-color: var(--error-bg) !important;
+}
+
+.flagCellPadding {
+    padding: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    .hideWhenSmall {
+        visibility: hidden;
+    }
+}
+
+#github_link_container {
+    color: var(--link-color);
+    display: flex;
+    align-items: center;
+    font-size: var(--small-font-size);
+    position: absolute;
+}
+
+#github_link_container:hover {
+    text-decoration: underline;
+}
+
+#github_logo {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+#instructions {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#inputs_table {
+    width: 100%;
+}
+
+#inputs_table tr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inputs_table tr td {
+    text-align: center;
+}
+
+#inputs_table tr td:nth-child(1) {
+    max-width: var(--inputs-width);
+    width: 100%;
+}
+
+#inputs_table tr td:nth-child(2) {
+    width: 32px;
+}
+
+#inputs_table tr td:nth-child(3) {
+    max-width: var(--inputs-width);
+    width: 100%;
+}
+
+#inputs_table td, #flag_description_table td {
+    padding: 10px;
+}
+
+#inputs_table input {
+    padding: 8px;
+    width: 100%;
+}
+
+#inputs_table select {
+    width: 100%;
+}
+
+#checkboxes_table {
+    outline: 2px solid var(--dark-bg);
+    margin-top: 30px;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#checkboxes_table td {
+    outline: 1px solid var(--dark-bg);
+    border: 0px;
+    border-collapse: collapse;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#checkboxes_table label {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#checkboxes_table input[type="checkbox"] {
+    display: none;
+}
+
+/*
+#checkboxes_table input[type="checkbox"]:not(:checked) + div {
+    color: #c9cacc;
+}
+*/
+
+#checkboxes_table input[type="checkbox"]:checked + div {
+    color: var(--selected-flag-text);
+    background-color: var(--selected-flag-bg);
+}
+
+#checkboxes_table .flag_value {
+    margin-top: 5px;
+    font-family: monospace;
+    font-size: var(--small-font-size);
+    color: var(--dim-text);
+}
+
+#checkboxes_table td label div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#flag_description_table {
+    width: 80%;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#flag_description_table tr td:nth-child(1) {
+    width: 50%; /* 49? */
+    text-align: right;
+}
+
+#flag_description_table tr:nth-child(1) td:nth-child(2) {
+    padding: 0px;
+}
+
+#flagtable {
+    margin-right: 10px;
+    width: auto;
+    max-width: 70%
+}
+
+/* Tooltip stuff */
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: calc(100vw * 0.5 - 250px);
+    background-color: black;
+    color: var(--normal-text);
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 10px;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
